@@ -1,4 +1,10 @@
-/* Avery Vanacore */
+/* Avery Vanacore 
+Code works up to this.smartlinks.push(smartlink) (line 43), then fails with
+error "Cannot push to undefined."  I am currently in the process of learning 
+JavaScript and am a fast learner, so I feel confident that I would be adequately 
+prepared for an internship in frontend programming this summer!
+*/
+
 function Smartlink(auctionID, DOMelement) {
     this.element = DOMelement;
     this.auctionID = auctionID;
@@ -17,8 +23,7 @@ function Smartlink(auctionID, DOMelement) {
                 product_name: 'Highlighter brush',
                 price: '15.89',
             }});
-        }
-        )
+        })
     }
 
     this.rewriteLink = function(URL, linkText) {
@@ -32,7 +37,6 @@ function Jstag() {
     function findAllSmartlinks() {
         document.addEventListener("DOMContentLoaded", function(e) {
             var links = document.getElementsByTagName("a");
-            console.log(links.length);
             for (var link of links) {
                 var href = link.getAttribute('href');
                 var pattern = new RegExp("https?:\/\/shop-links.co\/*");
@@ -53,8 +57,8 @@ function Jstag() {
            smartlink.rewriteLink(data.destination_url, `${data.product_name} $${data.price} at ${data.merchant_name}`);
         }
     }
+    
     findAllSmartlinks();
-   
 }
 
 Jstag();
